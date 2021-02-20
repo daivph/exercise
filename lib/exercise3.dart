@@ -42,7 +42,7 @@ class _Exercise3State extends State<Exercise3> {
 class ItemToto extends StatelessWidget {
   final Todo item;
   final Function onTapDone;
-  ItemToto({@required this.item, @required this.onTapDone});
+  const ItemToto({@required this.item, @required this.onTapDone});
   @override
   Widget build(BuildContext context) {
     return Container(

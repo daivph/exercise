@@ -1,31 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:homework/exercise1.dart';
 import 'package:homework/exercise2.dart';
-
+import 'package:homework/routes/app_pages.dart';
+import 'package:homework/theme/app_theme.dart';
 import 'exercise3.dart';
+import 'exercise4.dart';
+import 'exercise5.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      theme: AppTheme.light(),
+      darkTheme: AppTheme.dark(),
+      initialRoute: AppPages.INITIAL,
+      getPages: AppPages.routes,
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
+  MyHomePage({Key key}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -36,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text('Exercise'),
       ),
       body: Center(
         child: Column(
@@ -44,28 +45,29 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             FlatButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => Exercise1()));
+                  Get.to(Exercise1());
                 },
                 child: Text('Exercise 1')),
             FlatButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => Exercise2()));
+                  Get.to(Exercise2());
                 },
                 child: Text('Exercise 2')),
             FlatButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => Exercise3()));
+                  Get.to(Exercise3());
                 },
-                child: Text('Exercise 3'))
+                child: Text('Exercise 3')),
+            FlatButton(
+                onPressed: () {
+                  Get.to(Exercise4());
+                },
+                child: Text('Exercise 4')),
+            FlatButton(
+                onPressed: () {
+                  Get.to(() => Exercise5());
+                },
+                child: Text('Exercise 5'))
           ],
         ),
       ),
